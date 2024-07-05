@@ -128,9 +128,9 @@ lbl_space_message = tk.Label(scrollable_frame_check, text="rpool free storage sh
 lbl_space_message.pack(padx=10, pady=5)  
 
 lbl_remove_bags = create_button_with_label(scrollable_frame_check, "Remove Bags", lambda: run_command("rm /data/aviary/local/*.bag", lbl_remove_bags))
-lbl_cluster1 = create_button_with_label(scrollable_frame_check, "Check Cluster Connection 1", lambda: run_command("ping -c 1 chiron.seas.unipenn.edu", lbl_cluster1))
-lbl_cluster2 = create_button_with_label(scrollable_frame_check, "Check Cluster Connection 2", lambda: run_command("ping -c 1 neowise.seas.unipenn.edu", lbl_cluster2))
-lbl_cluster_login = create_button_with_label(scrollable_frame_check, "Check Cluster Login", lambda: run_command("ssh birdproc@chiron.seas.unipenn.edu 'md5sum /mnt/bird_home/birdproc/login_verification'", lbl_cluster_login))
+lbl_cluster1 = create_button_with_label(scrollable_frame_check, "Check Cluster Connection 1", lambda: run_command("ping -c 1 chiron.seas.upenn.edu", lbl_cluster1))
+lbl_cluster2 = create_button_with_label(scrollable_frame_check, "Check Cluster Connection 2", lambda: run_command("ping -c 1 neowise.seas.upenn.edu", lbl_cluster2))
+lbl_cluster_login = create_button_with_label(scrollable_frame_check, "Check Cluster Login", lambda: run_command("ssh birdproc@chiron.seas.upenn.edu 'md5sum /mnt/bird_home/birdproc/login_verification'", lbl_cluster_login))
 
 
 # Bag Tab
@@ -142,7 +142,7 @@ def list_available_bags():
         return
 
     YEAR = year_input
-    command = f"ssh birdproc@chiron.seas.unipenn.edu \"ls -lah /mnt/bird_home/birds/data/aviary/{YEAR}/bags/\""
+    command = f"ssh birdproc@chiron.seas.upenn.edu \"ls -lah /mnt/bird_home/birds/data/aviary/{YEAR}/bags/\""
     run_command(command, list_bags_output)
 
 def copy_bag_from_cluster():
@@ -155,7 +155,7 @@ def copy_bag_from_cluster():
 
     MONTH, DAY = month_input.zfill(2), day_input.zfill(2)
     DATE = f"{YEAR}-{MONTH}-{DAY}"
-    command = f"scp birdproc@chiron.seas.unipenn.edu:/mnt/bird_home/birds/data/aviary/{YEAR}/bags/aviary_{DATE}* /data/aviary/local/."
+    command = f"scp birdproc@chiron.seas.upenn.edu:/mnt/bird_home/birds/data/aviary/{YEAR}/bags/aviary_{DATE}* /data/aviary/local/."
     run_command(command, copy_bag_output)
 
 
